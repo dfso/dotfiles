@@ -25,6 +25,7 @@ set wrap breakindent
 set encoding=utf-8
 set title
 set number
+set cursorline
 set relativenumber
 set termguicolors
 set showmatch
@@ -56,6 +57,7 @@ Plug 'altercation/vim-colors-solarized' " Solarized Colorscheme for Vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Coc is an intellisense engine for vim8 & neovim.
 Plug 'vim-airline/vim-airline' " status/tabline fom vim
 Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree' "The NERDTree is a file system explorer for the Vim editor
 
 " Initialize plugin system
 call plug#end()
@@ -70,3 +72,5 @@ set background=dark
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16'
 
+map <F3> :NERDTreeToggle<CR>
+" set statusline^=%{coc#status()}
