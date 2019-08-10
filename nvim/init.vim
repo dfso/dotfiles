@@ -9,11 +9,11 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-autocmd VimLeave * :set guicursor=a:hor100,blinkon250
-autocmd QuitPre * :set guicursor=a:hor100,blinkon250
+" autocmd VimLeave * :set guicursor=a:hor100,blinkon250
+" autocmd QuitPre * :set guicursor=a:hor100,blinkon250
 
 " cursor shape
-set guicursor=n-v:hor75,i:hor100,a:blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175
+" set guicursor=n-v:hor75,i:hor100,a:blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175
 
 filetype plugin indent on
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
