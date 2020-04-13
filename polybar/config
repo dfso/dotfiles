@@ -1,0 +1,337 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+include-file = ~/.config/polybar/powerline-for-polybar.config
+
+[colors]
+black  = #000000
+white  = #aaaaaa
+gray   = #404040
+
+alert = #dc322f
+alert-foreground = #002b36
+
+background = #24292E
+foreground = #FFFFFF
+border = ${self.background}
+empty = #555555
+
+background-alt = #444
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+
+
+;;; cores dos modulos ;;;
+cpu         = #9c27b0
+memory      = #2196f3
+filesystem  = #c51162
+pulseaudio  = #607d8b
+date        = #795548
+xkeyboard   = #66bb6a
+bspwm       = ${self.gray}
+line-end    = ${self.gray}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[bar/dfso]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = false
+
+; Set bar's default background/foreground color
+background         = ${colors.gray}
+foreground         = ${colors.white}
+
+line-size = 2
+line-color = #f00
+
+border-size = 2
+border-color = #00000000
+
+padding-left = 1
+padding-right = 2
+
+;module-margin-left = 1
+;module-margin-right = 2
+
+font-0 = Hack Nerd Font:size=10:style=bold
+font-1 = Hack Nerd Font:size=10;
+font-2 = Hack Nerd Font Regular:size=10;1
+
+modules-left = bspwm 
+modules-right = filesystem pulseaudio xkeyboard memory cpu eth temperature date powermenu
+modules-center = title
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/title]
+type = internal/xwindow
+
+label = %title%
+label-maxlen = 50
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/xkeyboard]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.xkeyboard}
+background-next    = ${colors.pulseaudio}
+
+format-background = ${self.background}
+format-foreground = #f3e5f5
+
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = "   %layout% "
+
+label-indicator-padding = 0
+label-indicator-margin = 0
+label-indicator-background = ${colors.secondary}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/filesystem]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.filesystem}
+background-next    = ${root.background}
+type = internal/fs
+interval = 25
+mount-0 = /
+
+label-mounted = "  %mountpoint%: %percentage_used%% "
+label-mounted-background = ${self.background}
+label-mounted-foreground = #fce4ec
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+format-background = ${self.background}
+format-foreground = ${colors.black}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/cpu]
+
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.cpu}
+background-next    = ${colors.memory}
+
+type = internal/cpu
+interval = 2
+format-background  = ${self.background}
+format-foreground  = #e3f2fd
+label = " ﬙ cpu %percentage:2%% "
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/memory]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.memory}
+background-next    = ${colors.xkeyboard}
+
+type = internal/memory
+interval = 2
+format-background = ${self.background}
+format-foreground = #e3f2fd
+label = "  ram %percentage_used%% "
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/eth]
+type = internal/network
+interface = enp0s29f7u7
+interval = 3.0
+
+format-connected-underline = ${colors.eth}
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.eth}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/date]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.date}
+background-next    = ${colors.cpu}
+
+type = internal/date
+interval = 5
+
+format-background = ${self.background}
+format-foreground = #e3f2fd
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+label = "  %date% %time% "
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/pulseaudio]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.pulseaudio}
+background-next    = ${colors.filesystem}
+
+format-background = ${self.background}
+format-foreground = #e3f2fd
+
+type = internal/pulseaudio
+format-volume-background = ${self.background}
+
+format-volume = <label-volume> <bar-volume>
+label-volume = "  %percentage%% "
+label-volume-foreground = #e3f2fd
+
+label-muted = ﱝ muted
+label-muted-foreground = #666
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = ${colors.temperature}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-1-foreground = ${colors.temperature}
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/powermenu]
+inherit         = powerline-templates/right-to-left-item
+background      = ${colors.gray}
+background-next = ${colors.date}
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = " ⏻"
+label-open-foreground = ${colors.secondary}
+label-close = ﰸ cancel
+label-close-foreground = #9c27b0
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = ﰇ reboot
+menu-0-0-foreground = #2196f3
+menu-0-0-exec = menu-open-1
+menu-0-1 = ﮤ power off
+menu-0-1-foreground = #ffeb3b
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
