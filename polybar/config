@@ -46,6 +46,8 @@ date        = #795548
 xkeyboard   = #66bb6a
 bspwm       = ${self.gray}
 line-end    = ${self.gray}
+eth         = #e0e0e0 
+temperature = #ffd54f
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [bar/dfso]
@@ -212,7 +214,7 @@ format-disconnected =
 [module/date]
 inherit            = powerline-templates/right-to-left-item
 background         = ${colors.date}
-background-next    = ${colors.cpu}
+background-next    = ${colors.temperature}
 
 type = internal/date
 interval = 5
@@ -266,24 +268,28 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/temperature]
+inherit            = powerline-templates/right-to-left-item
+background         = ${colors.temperature}
+background-next    = ${colors.cpu}
+
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${colors.temperature}
+format-background = ${colors.temperature}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
+label = "%temperature-c% "
+label-foreground = #d50000
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
-ramp-1 = 
-ramp-1-foreground = ${colors.temperature}
+ramp-1 = "  "
+ramp-1-foreground = #d50000
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = #e3f2fd
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [module/powermenu]
