@@ -19,4 +19,14 @@ Plug 'cohama/lexima.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" navegador de arquivos
 Plug 'scrooloose/nerdtree'
+
+" complementação de código
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" colorscheme
+Plug 'joshdick/onedark.vim'
+
+" colorscheme
+Plug 'ayu-theme/ayu-vim'
