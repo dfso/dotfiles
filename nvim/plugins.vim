@@ -14,7 +14,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mengelbrecht/lightline-bufferline'
 
 " Auto-fechamento de delimitadores
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
