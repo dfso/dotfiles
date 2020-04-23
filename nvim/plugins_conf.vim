@@ -1,5 +1,9 @@
 " esquema de cores
-colorscheme gruvbox
+" colorscheme gruvbox
+" colorscheme onedark
+colorscheme ayu
+" let ayucolor="dark"
+let ayucolor="mirage"
 
 " lightline.vim
 let g:lightline = {
