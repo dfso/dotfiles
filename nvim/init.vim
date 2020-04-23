@@ -50,7 +50,7 @@ set fileformats=unix,dos,mac
 " Whitespace
 set wrap
 set textwidth=79
-set linebreak
+" set linebreak
 set showbreak=+++
 set formatoptions=tcqrn1
 set tabstop=4
@@ -58,7 +58,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set noshiftround
-
 " ir para o modo normal
 " imap jk <Esc>
 
