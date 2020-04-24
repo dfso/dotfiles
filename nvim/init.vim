@@ -49,7 +49,7 @@ set fileformats=unix,dos,mac
 
 " Whitespace
 set wrap
-set textwidth=79
+" set textwidth=79
 " set linebreak
 set showbreak=+++
 set formatoptions=tcqrn1
