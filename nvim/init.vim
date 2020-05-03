@@ -65,8 +65,8 @@ set noshiftround
 
 
 " buffers navigation
-nnoremap <C-J> :bn<CR> 
-nnoremap <C-K> :bp<CR> 
+nnoremap <C-K> :bn<CR> 
+nnoremap <C-J> :bp<CR> 
 
 " disable arrow keys
 nnoremap <Up> :echo 'use **K**' <CR>
