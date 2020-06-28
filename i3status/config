@@ -1,0 +1,57 @@
+general {
+    output_format = "i3bar"
+    colors = false
+    markup = pango
+    interval = 5
+    color_good = '#2f343f'
+    color_degraded = '#ebcb8b'
+    color_bad = '#ba5e57'
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "disk /home"
+order += "ethernet _first_"
+order += "volume master"
+order += "tztime local"
+
+load {
+    format = "<span background='#f59335'>  %5min Load </span>"
+}
+
+cpu_usage {
+    format = "<span background='#c70039'>  %usage -> %cpu0 / %cpu1 / %cpu2 / %cpu3 </span>"
+}
+
+memory {
+    format = "<span background='#035aa6'>  %used/%total </span>"
+}
+
+disk "/" {
+    format = "<span background='#fa7d09'>  %free Free </span>"
+}
+
+disk "/home" {
+    format = "<span background='#436f8a'> 便 %free Free </span>"
+}
+
+ethernet _first_ {
+    format_up = "<span background='#438a5e'>  %ip </span>"
+    format_down = "<span background='#0f0f0f'> X Disconnected </span>"
+}
+
+
+volume master {
+    format = "<span background='#45046a'>  %volume </span>"
+    format_muted = "<span background='#ebcb8b'>  Muted </span>"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+tztime local {
+    format = "<span background='#6a197d'> %time </span>"
+    format_time = " %a %-d %b %H:%M"
+}
+
