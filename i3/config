@@ -20,6 +20,8 @@ exec --no-startup-id setxkbmap br
 
 ### compositor
 exec --no-startup-id picom -b
+### set background
+exec --no-startup-id feh --bg-scale --randomize ~/Downloads/wallpapers/*
 
 
 
