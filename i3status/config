@@ -33,7 +33,7 @@ disk "/" {
 }
 
 disk "/home" {
-    format = "<span background='#436f8a'> 便 %free Free </span>"
+    format = "<span background='#436f8a'>  %free Free </span>"
 }
 
 ethernet _first_ {
