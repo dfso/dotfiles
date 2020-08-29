@@ -30,3 +30,5 @@ Plug 'joshdick/onedark.vim'
 
 " colorscheme
 Plug 'ayu-theme/ayu-vim'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
