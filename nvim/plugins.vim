@@ -21,7 +21,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " navegador de arquivos
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
+Plug 'justinmk/vim-dirvish'
 
 " complementação de código
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -33,3 +34,4 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
